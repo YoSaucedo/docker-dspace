@@ -30,7 +30,7 @@ LABEL Name="Dspace v${DSPACE_VERSION}" \
       org.label-schema.version=$VCS_BRANCH \
       org.label-schema.version="latest" \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -d --link postgres -p 8080:8080 unixelias/docker-dspace"
+      org.label-schema.docker.cmd="docker run -d --link postgres -p 80:80 unixelias/docker-dspace"
 
 
 ENV DPSACE_TGZ_URL=https://github.com/DSpace/DSpace/releases/download/dspace-$DSPACE_VERSION/dspace-$DSPACE_VERSION-release.tar.gz \
@@ -93,7 +93,6 @@ RUN mkdir -p maven \
     && rm -fr "$CATALINA_HOME/webapps" && mv -f /dspace/webapps "$CATALINA_HOME" \
     && sed -i s/CONFIDENTIAL/NONE/ /usr/local/tomcat/webapps/rest/WEB-INF/web.xml \
     && rm -fr ~/.m2 && rm -fr /tmp/* && apt-get remove -y ant \
-    && rm -rf /usr/local/tomcat/webapps/oai \
     && rm -rf /usr/local/tomcat/webapps/sword \
     && rm -rf /usr/local/tomcat/webapps/swordv2 \
     && rm -rf /usr/local/tomcat/webapps/xmlui \
@@ -116,6 +115,6 @@ RUN echo "Ubuntu GNU/Linux 16.04 (xenial) image. (`uname -rsv`)" >> /root/.built
     echo "- with `java -version 2>&1 | awk 'NR == 2'`" >> /root/.built && \
     echo "- with DSpace v$DSPACE_VERSION on Tomcat v$TOMCAT_VERSION"  >> /root/.built
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["start-dspace"]
