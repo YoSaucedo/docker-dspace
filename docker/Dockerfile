@@ -10,28 +10,11 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_BRANCH
 # Environment variables
-ARG DSPACE_VERSION
-ARG TOMCAT_MAJOR
-ARG TOMCAT_VERSION
-ARG MAVEN_MAJOR
-ARG MAVEN_VERSION
-
-# Build-time metadata as defined at http://label-schema.org
-LABEL Name="Dspace v${DSPACE_VERSION}" \
-      Version=$VCS_BRANCH \
-      Architecture="x86_64" \
-      org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Dspace" \
-      org.label-schema.description="Deployment of Dspace on Docker" \
-      org.label-schema.url="http://www.dspace.org/" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/unixelias/docker-dspace" \
-      org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version=$VCS_BRANCH \
-      org.label-schema.version="latest" \
-      org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -d --link postgres -p 80:80 unixelias/docker-dspace"
-
+ARG DSPACE_VERSION=6.0
+ARG TOMCAT_MAJOR=8
+ARG TOMCAT_VERSION=8.5.30
+ARG MAVEN_MAJOR=3
+ARG MAVEN_VERSION=3.5.3
 
 ENV DPSACE_TGZ_URL=https://github.com/DSpace/DSpace/releases/download/dspace-$DSPACE_VERSION/dspace-$DSPACE_VERSION-release.tar.gz \
     MAVEN_TGZ_URL=http://apache.mirror.iweb.ca/maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
