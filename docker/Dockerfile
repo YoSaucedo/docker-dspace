@@ -21,7 +21,8 @@ ENV DPSACE_TGZ_URL=https://github.com/DSpace/DSpace/releases/download/dspace-$DS
 ENV MAVEN_TGZ_URL=http://apache.mirror.iweb.ca/maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz 
 ENV TOMCAT_TGZ_URL=https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
-ENV CATALINA_HOME=/usr/local/tomcat DSPACE_HOME=/dspace
+ENV CATALINA_HOME=/usr/local/tomcat
+ENV DSPACE_HOME=/dspace
 
 ENV PATH=$CATALINA_HOME/bin:$DSPACE_HOME/bin:$PATH
 
