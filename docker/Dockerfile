@@ -10,19 +10,17 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_BRANCH
 # Environment variables
-
 ARG DSPACE_VERSION=6.0
 ARG TOMCAT_MAJOR=8
 ARG TOMCAT_VERSION=8.5.30
 ARG MAVEN_MAJOR=3
 ARG MAVEN_VERSION=3.5.3
 
-ENV DPSACE_TGZ_URL=https://github.com/DSpace/DSpace/releases/download/dspace-$DSPACE_VERSION/dspace-$DSPACE_VERSION-release.tar.gz 
-ENV MAVEN_TGZ_URL=http://apache.mirror.iweb.ca/maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz 
-ENV TOMCAT_TGZ_URL=https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+ENV DPSACE_TGZ_URL=https://github.com/DSpace/DSpace/releases/download/dspace-$DSPACE_VERSION/dspace-$DSPACE_VERSION-release.tar.gz \
+    MAVEN_TGZ_URL=http://apache.mirror.iweb.ca/maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
+    TOMCAT_TGZ_URL=https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
-ENV CATALINA_HOME=/usr/local/tomcat
-ENV DSPACE_HOME=/dspace
+ENV CATALINA_HOME=/usr/local/tomcat DSPACE_HOME=/dspace
 
 ENV PATH=$CATALINA_HOME/bin:$DSPACE_HOME/bin:$PATH
 
@@ -80,6 +78,7 @@ RUN mkdir -p maven \
     && rm -fr ~/.m2 && rm -fr /tmp/* && apt-get remove -y ant \
     && rm -rf /usr/local/tomcat/webapps/sword \
     && rm -rf /usr/local/tomcat/webapps/swordv2 \
+    && rm -rf /usr/local/tomcat/webapps/xmlui \
     && rm -rf ../maven \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
