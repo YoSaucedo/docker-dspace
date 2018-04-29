@@ -17,23 +17,6 @@ ARG TOMCAT_VERSION=8.5.30
 ARG MAVEN_MAJOR=3
 ARG MAVEN_VERSION=3.5.3
 
-# Build-time metadata as defined at http://label-schema.org
-LABEL Name="Dspace v${DSPACE_VERSION}" \
-      Version=$VCS_BRANCH \
-      Architecture="x86_64" \
-      org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Dspace" \
-      org.label-schema.description="Deployment of Dspace on Docker" \
-      org.label-schema.url="http://www.dspace.org/" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/unixelias/docker-dspace" \
-      org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version=$VCS_BRANCH \
-      org.label-schema.version="latest" \
-      org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -d --link postgres -p 8080:8080 unixelias/docker-dspace"
-
-
 ENV DPSACE_TGZ_URL=https://github.com/DSpace/DSpace/releases/download/dspace-$DSPACE_VERSION/dspace-$DSPACE_VERSION-release.tar.gz 
 ENV MAVEN_TGZ_URL=http://apache.mirror.iweb.ca/maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz 
 ENV TOMCAT_TGZ_URL=https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
